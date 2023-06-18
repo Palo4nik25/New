@@ -24,49 +24,54 @@ public class Logic {
     }
 
     private static double inputDouble() {
-        System.out.print("Please enter your number: ");
-        return scan.nextDouble();
+        double num = 0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            System.out.print("Please enter your number: ");
+            if (scan.hasNextDouble()) {
+                num = scan.nextInt();
+                validInput = true;
+            } else {
+                System.out.println("Invalid input! Please enter a valid integer input.");
+                scan.nextLine();
+            }
+        }
+        return num;
     }
 
     private static char inputOperator() {
-        System.out.print("Please enter your operator(+, -, *, /): ");
-        return scan.next().charAt(0);
+        char input = '0';
+        boolean validInput = false;
+
+        while (!validInput) {
+            System.out.print("Please enter your operator(+, -, *, /): ");
+            input = scan.next().charAt(0);
+            if (input != '+' && input != '-' && input != '*' && input != '/') {
+                System.out.println("Invalid input! Please enter a valid operator.");
+                scan.nextLine();
+            } else {
+                validInput = true;
+            }
+        }
+        return input;
     }
 
     private static double performOperation() {
         switch (op) {
             case '+':
-                sum();
+                res = num1 + num2;
                 break;
             case '-':
-                diff();
+                res = num1 - num2;
                 break;
             case '*':
-                multiply();
+                res = num1 * num2;
                 break;
             case '/':
-                divide();
-                break;
-            default:
-                System.out.println("Invalid operator, please enter a correct one.");
+                res = num1 / num2;
                 break;
         }
         return res;
-    }
-
-    public static void sum(){
-        res = num1 + num2;
-    }
-
-    public static void diff(){
-        res = num1 - num2;
-    }
-
-    public static void multiply(){
-        res = num1 * num2;
-    }
-
-    public static void divide(){
-        res = num1 / num2;
     }
 }
