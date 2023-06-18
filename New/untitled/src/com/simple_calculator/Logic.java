@@ -3,11 +3,11 @@ package com.simple_calculator;
 import java.util.Scanner;
 
 public class Logic {
-    static Scanner scan = new Scanner(System.in);
-    static double num1, num2, res;
-    static char op;
+    private static final Scanner scan = new Scanner(System.in);
+    private static double num1, num2, res;
+    private static char op;
 
-    public static void countLogic() {
+    public static void performCalculation() {
         while (true) {
             num1 = inputDouble();
             op = inputOperator();
@@ -30,10 +30,10 @@ public class Logic {
         while (!validInput) {
             System.out.print("Please enter your number: ");
             if (scan.hasNextDouble()) {
-                num = scan.nextInt();
+                num = scan.nextDouble();
                 validInput = true;
             } else {
-                System.out.println("Invalid input! Please enter a valid integer input.");
+                System.out.println("Invalid input! Please enter a valid numeric input.");
                 scan.nextLine();
             }
         }
@@ -45,7 +45,7 @@ public class Logic {
         boolean validInput = false;
 
         while (!validInput) {
-            System.out.print("Please enter your operator(+, -, *, /): ");
+            System.out.print("Please enter your operator (+, -, *, /): ");
             input = scan.next().charAt(0);
             if (input != '+' && input != '-' && input != '*' && input != '/') {
                 System.out.println("Invalid input! Please enter a valid operator.");
